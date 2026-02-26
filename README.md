@@ -1,18 +1,69 @@
-# Strubio-ray Quicklook
+# homebrew-quicklook
 
-## How do I install these formulae?
+A Homebrew tap for unsigned QuickLook extensions that are being removed from
+the official Homebrew cask repository due to failing macOS Gatekeeper checks.
 
-`brew install strubio-ray/quicklook/<formula>`
+## Included Casks
 
-Or `brew tap strubio-ray/quicklook` and then `brew install <formula>`.
+| Cask | App | Version | Upstream |
+|------|-----|---------|----------|
+| `syntax-highlight` | Syntax Highlight | 2.1.27 | [sbarex/SourceCodeSyntaxHighlight](https://github.com/sbarex/SourceCodeSyntaxHighlight) |
+| `qlmarkdown` | QLMarkdown | 1.0.24 | [sbarex/QLMarkdown](https://github.com/sbarex/QLMarkdown) |
 
-Or, in a `brew bundle` `Brewfile`:
+## Why This Tap Exists
 
-```ruby
-tap "strubio-ray/quicklook"
-brew "<formula>"
+Starting September 1, 2026, Homebrew will remove casks that fail macOS
+Gatekeeper checks (unsigned/unnotarized apps). Both apps above are affected.
+Homebrew 5.0.0 also deprecates the `--no-quarantine` flag.
+
+This tap provides the same cask definitions with an added `postflight` hook
+that automatically removes the macOS quarantine extended attribute after
+installation, allowing the apps to launch without Gatekeeper warnings.
+
+## Installation
+
+```bash
+# Add the tap
+brew tap strubio-ray/quicklook
+
+# Install casks
+brew install --cask strubio-ray/quicklook/syntax-highlight
+brew install --cask strubio-ray/quicklook/qlmarkdown
 ```
 
-## Documentation
+After installation, open **System Settings > Privacy & Security > Extensions >
+Quick Look** to enable the extensions.
 
-`brew help`, `man brew` or check [Homebrew's documentation](https://docs.brew.sh).
+## Updating
+
+The tap updates automatically when you run `brew update`. To upgrade the
+casks:
+
+```bash
+brew upgrade --cask syntax-highlight
+brew upgrade --cask qlmarkdown
+```
+
+Livecheck is configured to track upstream Sparkle appcast feeds, so
+`brew livecheck` will detect new releases:
+
+```bash
+brew livecheck --tap strubio-ray/quicklook
+```
+
+## Security Notice
+
+**These applications are not signed or notarized by Apple.** This tap
+automatically removes the macOS quarantine attribute to allow installation.
+By using this tap, you acknowledge that:
+
+- You trust the upstream developer ([sbarex](https://github.com/sbarex))
+- You understand that unsigned apps bypass macOS Gatekeeper protections
+- You accept the security implications of running unverified software
+
+The sha256 checksums in each cask definition verify download integrity
+against the expected release artifacts.
+
+## License
+
+MIT
