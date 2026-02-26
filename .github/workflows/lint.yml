@@ -21,7 +21,7 @@ jobs:
         run: brew audit --cask --tap strubio-ray/quicklook
 
       - name: Style check
-        run: brew style --cask Casks/*.rb
+        run: brew style --cask strubio-ray/quicklook/syntax-highlight strubio-ray/quicklook/qlmarkdown
 
       - name: Livecheck
         run: brew livecheck --tap strubio-ray/quicklook
