@@ -28,10 +28,21 @@ jobs:
       - name: Style check
         run: brew style --cask Casks/*.rb
 
-      - name: Bump outdated casks
-        env:
-          HOMEBREW_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Bump outdated casks (write-only)
         run: |
           for cask in syntax-highlight qlmarkdown; do
-            brew bump-cask-pr --no-browse strubio-ray/quicklook/"$cask" || true
+            brew bump-cask-pr --write-only --no-audit --no-style strubio-ray/quicklook/"$cask" || true
           done
+
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "feat: bump cask versions"
+          branch: auto-bump-casks
+          title: "Bump cask versions"
+          body: |
+            Automated monthly version bump detected by `brew livecheck`.
+
+            Verify the updated versions and SHA256 hashes before merging.
+          delete-branch: true
