@@ -39,6 +39,9 @@ jobs:
             brew bump-cask-pr --write-only --no-audit --no-style "strubio-ray/quicklook/$cask"
           done
 
+      - name: Clear setup-homebrew auth header
+        run: git config --local --unset-all http.https://github.com/.extraheader || true
+
       - name: Create pull request
         uses: peter-evans/create-pull-request@v7
         with:
