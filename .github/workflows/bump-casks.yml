@@ -21,9 +21,6 @@ jobs:
         with:
           token: ${{ github.token }}
 
-      - name: Tap this repository
-        run: brew tap strubio-ray/quicklook "$GITHUB_WORKSPACE"
-
       - name: Audit casks
         run: brew audit --cask --tap strubio-ray/quicklook
 
