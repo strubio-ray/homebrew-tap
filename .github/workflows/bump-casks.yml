@@ -24,21 +24,21 @@ jobs:
           token: ${{ github.token }}
 
       - name: Audit casks
-        run: brew audit --cask --tap strubio-ray/quicklook
+        run: brew audit --cask --tap strubio-ray/tap
 
       - name: Style check
-        run: brew style --cask strubio-ray/quicklook/syntax-highlight strubio-ray/quicklook/qlmarkdown
+        run: brew style --cask strubio-ray/tap/syntax-highlight strubio-ray/tap/qlmarkdown
 
       - name: Bump outdated casks (write-only)
         run: |
-          outdated=$(brew livecheck --tap strubio-ray/quicklook --json | jq -r '.[] | select(.version.outdated == true) | .cask')
+          outdated=$(brew livecheck --tap strubio-ray/tap --json | jq -r '.[] | select(.version.outdated == true) | .cask')
           if [ -z "$outdated" ]; then
             echo "All casks are up to date."
             exit 0
           fi
           for cask in $outdated; do
             echo "Bumping $cask..."
-            brew bump-cask-pr --write-only --no-audit --no-style "strubio-ray/quicklook/$cask"
+            brew bump-cask-pr --write-only --no-audit --no-style "strubio-ray/tap/$cask"
           done
 
       - name: Create pull request

@@ -17,11 +17,14 @@ jobs:
         with:
           token: ${{ github.token }}
 
+      - name: Audit formulas
+        run: brew audit --formula --tap strubio-ray/tap
+
       - name: Audit casks
-        run: brew audit --cask --tap strubio-ray/quicklook
+        run: brew audit --cask --tap strubio-ray/tap
 
       - name: Style check
-        run: brew style --cask strubio-ray/quicklook/syntax-highlight strubio-ray/quicklook/qlmarkdown
+        run: brew style strubio-ray/tap
 
-      - name: Livecheck
-        run: brew livecheck --tap strubio-ray/quicklook
+      - name: Livecheck (casks)
+        run: brew livecheck --cask --tap strubio-ray/tap
