@@ -13,7 +13,8 @@ class MarvinRelay < Formula
   depends_on "go" => :build
 
   def install
-    system "go", "build", *std_go_args(ldflags: "-s -w"), "-o", bin/"marvin-relay", "./server"
+    ldflags = %W[-s -w -X main.version=#{version}]
+    system "go", "build", *std_go_args(ldflags:), "-o", bin/"marvin-relay", "./server"
     (etc/"marvin-relay").install "server/config.example" => "config"
   end
 
@@ -31,6 +32,6 @@ class MarvinRelay < Formula
   end
 
   test do
-    assert_match "marvin-relay 0.1.0", shell_output("#{bin}/marvin-relay --version")
+    assert_match "marvin-relay #{version}", shell_output("#{bin}/marvin-relay --version")
   end
 end
