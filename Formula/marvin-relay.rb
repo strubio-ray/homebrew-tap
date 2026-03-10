@@ -1,8 +1,8 @@
 class MarvinRelay < Formula
   desc "Go relay server bridging Amazing Marvin webhooks to Apple Live Activities"
   homepage "https://github.com/strubio-ray/marvin-time-tracker"
-  url "https://github.com/strubio-ray/marvin-time-tracker/archive/refs/tags/v2.0.0.tar.gz"
-  sha256 "1e332586559eee1a6e7249b996b53bb5d73ddc9ddf301d7998291d21d62bdf58"
+  url "https://github.com/strubio-ray/marvin-time-tracker/archive/refs/tags/v2.1.0.tar.gz"
+  sha256 "4b8c937c2fa258980d041d12d885bbeb0f18db3c7dc4d4f13b2348d9fa608e85"
   license "MIT"
 
   livecheck do
