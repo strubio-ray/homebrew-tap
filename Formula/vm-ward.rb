@@ -10,12 +10,10 @@ class VmWard < Formula
   def install
     inreplace "bin/vmw", "%%VERSION%%", version.to_s
 
-    on_macos do
+    if OS.mac?
       libexec.install "bin", "lib", "share"
       bin.write_exec_script libexec/"bin/vmw"
-    end
-
-    on_linux do
+    elsif OS.linux?
       (libexec/"bin").install "bin/vmw"
       (libexec/"lib").install "lib/vmw-common.sh", "lib/vmw-guest.sh"
       bin.write_exec_script libexec/"bin/vmw"
