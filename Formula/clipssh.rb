@@ -19,11 +19,6 @@ class Clipssh < Formula
   sha256 "89f3152b5c7a2c625108c89e2d5da77dc1820928f9425f72981c6a63fb575447"
   license "MIT"
 
-  livecheck do
-    url :stable
-    strategy :github_latest
-  end
-
   depends_on :macos
   depends_on "pngpaste"
 

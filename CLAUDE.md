@@ -32,11 +32,13 @@ brew bump-cask-pr --write-only --no-audit --no-style "strubio-ray/tap/<cask-name
 ## Key Patterns
 
 ### Formulas
-- Version sourced from GitHub tags via `livecheck { strategy :github_latest }`
-- Build-time version embedding with Go ldflags (`-X main.version=#{version}`)
+- No explicit livecheck block — Homebrew auto-detects the `:git` strategy from the stable URL (`git ls-remote --tags`). Do not use `strategy :github_latest` (requires GitHub Releases, which these repos don't create).
+- Formula version bumps are automated via `mislav/bump-homebrew-formula-action` in each source repo's CI (triggers on tag push)
+- Build-time version embedding with Go ldflags (`-X main.version=#{version}`) for compiled formulas, `inreplace` for shell scripts
 - Service block for launchd integration (`brew services start/stop`)
 - Config files installed to `etc/<formula-name>/`
 - Test block verifies `--version` output
+- `clipssh` uses a custom `GitHubPrivateRepositoryDownloadStrategy` for authenticated downloads
 
 ### Casks
 - Both casks are **unsigned** — the `postflight` block removes `com.apple.quarantine` via `xattr -dr` (this is the whole reason this tap exists instead of using homebrew-cask)
@@ -45,7 +47,10 @@ brew bump-cask-pr --write-only --no-audit --no-style "strubio-ray/tap/<cask-name
 - `zap trash` lists all Library paths for clean uninstall
 
 ### Updating a formula version
-1. Update `version` in the formula file
+Formula versions are updated automatically: push a `v*` tag in the source repo and `mislav/bump-homebrew-formula-action` commits the new version + sha256 directly to this tap.
+
+To update manually:
+1. Update `url` with the new tag in the formula file
 2. Download the new release tarball and compute `sha256`
 3. Update the `sha256` in the formula
 4. Run `brew audit --formula --tap strubio-ray/tap && brew style strubio-ray/tap`

@@ -57,8 +57,10 @@ Quick Look** to enable the extensions.
 ```bash
 brew update
 brew upgrade            # upgrades all installed formulas and casks
-brew livecheck --tap strubio-ray/tap   # check for new upstream versions
+brew livecheck --cask --tap strubio-ray/tap   # check for new upstream cask versions
 ```
+
+Formula versions are bumped automatically when source repos push new tags.
 
 ## Security Notice (QuickLook Casks)
 

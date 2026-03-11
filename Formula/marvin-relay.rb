@@ -5,11 +5,6 @@ class MarvinRelay < Formula
   sha256 "b593ccb470a643aaa61646ccbd729f0f0ceedf5f96f797370694347a3ab5cd52"
   license "MIT"
 
-  livecheck do
-    url :stable
-    strategy :github_latest
-  end
-
   depends_on "go" => :build
 
   def install
