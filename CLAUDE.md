@@ -5,7 +5,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Overview
 
 Personal Homebrew tap (`strubio-ray/tap`) distributing:
-- **Formulas** (`Formula/`): compiled software (`marvin-relay`, a Go relay server) and shell utilities (`clipssh`, clipboard-to-SSH tool — private repo, requires `HOMEBREW_GITHUB_API_TOKEN`)
+- **Formulas** (`Formula/`): compiled software (`marvin-relay`, a Go relay server) and shell utilities (`clipssh`, clipboard-to-SSH tool)
 - **Casks** (`Casks/`): macOS apps (currently `qlmarkdown` and `syntax-highlight` — unsigned QuickLook extensions)
 
 ## Common Commands
@@ -38,7 +38,6 @@ brew bump-cask-pr --write-only --no-audit --no-style "strubio-ray/tap/<cask-name
 - Service block for launchd integration (`brew services start/stop`)
 - Config files installed to `etc/<formula-name>/`
 - Test block verifies `--version` output
-- `clipssh` uses a custom `GitHubPrivateRepositoryDownloadStrategy` for authenticated downloads
 
 ### Casks
 - Both casks are **unsigned** — the `postflight` block removes `com.apple.quarantine` via `xattr -dr` (this is the whole reason this tap exists instead of using homebrew-cask)

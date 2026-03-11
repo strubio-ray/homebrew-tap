@@ -27,8 +27,6 @@ brew services log marvin-relay
 
 ### clipssh
 
-Requires `HOMEBREW_GITHUB_API_TOKEN` (see [Auth Setup](#auth-setup-private-formulas) below).
-
 ```bash
 brew install strubio-ray/tap/clipssh
 clipssh user@myserver
@@ -74,16 +72,6 @@ By using these casks, you acknowledge that:
 
 The sha256 checksums in each cask definition verify download integrity
 against the expected release artifacts.
-
-## Auth Setup (Private Formulas)
-
-`clipssh` is distributed from a private GitHub repository. To install and update it:
-
-1. Create a GitHub PAT with `repo` scope (or fine-grained: Contents read + Metadata read on `strubio-ray/clipssh`)
-2. Add to your shell profile:
-   ```bash
-   export HOMEBREW_GITHUB_API_TOKEN="your-token-here"
-   ```
 
 ## License
 
