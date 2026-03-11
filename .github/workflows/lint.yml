@@ -18,6 +18,8 @@ jobs:
           token: ${{ github.token }}
 
       - name: Audit formulas
+        env:
+          HOMEBREW_GITHUB_API_TOKEN: ${{ secrets.HOMEBREW_GITHUB_API_TOKEN }}
         run: brew audit --formula --tap strubio-ray/tap
 
       - name: Audit casks
@@ -28,3 +30,8 @@ jobs:
 
       - name: Livecheck (casks)
         run: brew livecheck --cask --tap strubio-ray/tap
+
+      - name: Livecheck (formulas)
+        env:
+          HOMEBREW_GITHUB_API_TOKEN: ${{ secrets.HOMEBREW_GITHUB_API_TOKEN }}
+        run: brew livecheck --formula --tap strubio-ray/tap

@@ -13,6 +13,7 @@ brew tap strubio-ray/tap
 | Formula | Description | Install |
 |---------|-------------|---------|
 | `marvin-relay` | Go relay server bridging Amazing Marvin webhooks to Apple Live Activities | `brew install strubio-ray/tap/marvin-relay` |
+| `clipssh` | Send clipboard screenshots to remote SSH hosts | `brew install strubio-ray/tap/clipssh` |
 
 ### marvin-relay
 
@@ -22,6 +23,15 @@ Runs as a launchd service via `brew services`:
 brew install strubio-ray/tap/marvin-relay
 brew services start marvin-relay
 brew services log marvin-relay
+```
+
+### clipssh
+
+Requires `HOMEBREW_GITHUB_API_TOKEN` (see [Auth Setup](#auth-setup-private-formulas) below).
+
+```bash
+brew install strubio-ray/tap/clipssh
+clipssh user@myserver
 ```
 
 ## Casks
@@ -62,6 +72,16 @@ By using these casks, you acknowledge that:
 
 The sha256 checksums in each cask definition verify download integrity
 against the expected release artifacts.
+
+## Auth Setup (Private Formulas)
+
+`clipssh` is distributed from a private GitHub repository. To install and update it:
+
+1. Create a GitHub PAT with `repo` scope (or fine-grained: Contents read + Metadata read on `strubio-ray/clipssh`)
+2. Add to your shell profile:
+   ```bash
+   export HOMEBREW_GITHUB_API_TOKEN="your-token-here"
+   ```
 
 ## License
 
