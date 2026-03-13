@@ -5,6 +5,7 @@ class VmWard < Formula
   sha256 "add5fae144d835e17806766d748ebe9210207a8608e71bb20580a5ee70866930"
   license "MIT"
 
+  depends_on "go" => :build
   depends_on "jq"
 
   def install
@@ -18,6 +19,12 @@ class VmWard < Formula
       (libexec/"lib").install "lib/vmw-common.sh", "lib/vmw-guest.sh"
       bin.write_exec_script libexec/"bin/vmw"
     end
+
+    # Build Go TUI binary (after shell scripts are installed)
+    cd "tui" do
+      system "go", "build", *std_go_args(ldflags: "-s -w", output: libexec/"bin/vmw-tui")
+    end
+    bin.write_exec_script libexec/"bin/vmw-tui"
   end
 
   def caveats
@@ -25,8 +32,8 @@ class VmWard < Formula
       To start the auto-halt daemon (macOS only):
         vmw install
 
-      To stop the daemon:
-        vmw uninstall
+      To launch the interactive TUI dashboard:
+        vmw tui
     EOS
   end
 
