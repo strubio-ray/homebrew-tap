@@ -1,8 +1,8 @@
 class VmWard < Formula
   desc "Auto-halt daemon for forgotten Vagrant VMs"
   homepage "https://github.com/strubio-ray/vm-ward"
-  url "https://github.com/strubio-ray/vm-ward/archive/refs/tags/v1.3.0.tar.gz"
-  sha256 "29f17362005798ecb245bace0fc736078ff78d69f2f703100808a242f68069dc"
+  url "https://github.com/strubio-ray/vm-ward/archive/refs/tags/v1.4.0.tar.gz"
+  sha256 "f281feebbbd627443266645961b3bc3cd672cc67480b6942b20c64465e4c43dd"
   license "MIT"
 
   depends_on "go" => :build
