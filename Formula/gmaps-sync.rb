@@ -8,6 +8,8 @@ class GmapsSync < Formula
   depends_on "node"
 
   def install
+    system "npm", "install"
+    system "npm", "run", "build"
     system "npm", "install", *std_npm_args
     bin.install_symlink libexec/"bin/gmaps-sync"
   end
