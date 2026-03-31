@@ -6,7 +6,6 @@ class GmapsSync < Formula
   license "MIT"
 
   depends_on "node"
-  depends_on cask: "google-chrome"
 
   def install
     system "npm", "install", *std_npm_args
