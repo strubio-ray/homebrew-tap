@@ -6,12 +6,14 @@ class GmapsSync < Formula
   license "MIT"
 
   depends_on "node"
+  depends_on "pnpm" => :build
 
   def install
-    system "npm", "ci"
-    system "npm", "run", "build"
-    system "npm", "install", *std_npm_args
-    bin.install_symlink libexec/"bin/gmaps-sync"
+    system "pnpm", "install", "--frozen-lockfile"
+    system "pnpm", "-r", "build"
+    system "pnpm", "--filter", "@gmaps/cli", "deploy", "--prod", libexec
+
+    (bin/"places").write_env_script libexec/"dist/cli.js", PATH: "#{Formula["node"].opt_bin}:$PATH"
   end
 
   def post_install
@@ -35,7 +37,7 @@ class GmapsSync < Formula
   end
 
   service do
-    run [opt_bin/"gmaps-sync", "pull"]
+    run [opt_bin/"places", "pull"]
     run_type :cron
     cron "0 6 * * *"
     log_path var/"log/gmaps-sync/pull-stdout.log"
@@ -43,6 +45,6 @@ class GmapsSync < Formula
   end
 
   test do
-    assert_match "gmaps-sync", shell_output("#{bin}/gmaps-sync --help")
+    assert_match "places", shell_output("#{bin}/places --help")
   end
 end
