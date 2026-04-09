@@ -1,28 +1,28 @@
 class Mo < Formula
   desc "Markdown viewer that opens .md files in a browser"
   homepage "https://github.com/strubio-ray/mo"
-  version "0.23.0"
+  version "0.24.0"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/strubio-ray/mo/releases/download/strubio-v0.23.0/mo_strubio-v0.23.0_darwin_arm64.zip"
-      sha256 "6ec9085c565c2e4d838e84316c17828bcfea59c8098725e00d5ddb6017f4f42e"
+      url "https://github.com/strubio-ray/mo/releases/download/strubio-v0.24.0/mo_strubio-v0.24.0_darwin_arm64.zip"
+      sha256 "abf2780b44ae8f31378f471c57a1147c3db3be4be89685bf7357dc8f50e687e3"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/strubio-ray/mo/releases/download/strubio-v0.23.0/mo_strubio-v0.23.0_darwin_amd64.zip"
-      sha256 "9635526d200705fcc8eb9858bb8dfc99d764c73b07d3ec6068169973644b5834"
+      url "https://github.com/strubio-ray/mo/releases/download/strubio-v0.24.0/mo_strubio-v0.24.0_darwin_amd64.zip"
+      sha256 "eabc32c00e1e234d06a80348a0abb8ace160aa6c56fd2cb0024d2ed461c2ec77"
     end
   end
 
   on_linux do
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/strubio-ray/mo/releases/download/strubio-v0.23.0/mo_strubio-v0.23.0_linux_arm64.tar.gz"
-      sha256 "d80e090f16eeace1f72e64cfa239442aae38fe98ce821c86822f661f0ba68992"
+      url "https://github.com/strubio-ray/mo/releases/download/strubio-v0.24.0/mo_strubio-v0.24.0_linux_arm64.tar.gz"
+      sha256 "6aa41975c5ed3e049b112ade7492e7128307ed51f9a80bdc71b1ab7d91f9f42a"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/strubio-ray/mo/releases/download/strubio-v0.23.0/mo_strubio-v0.23.0_linux_amd64.tar.gz"
-      sha256 "cc92d3c732a2b1ffb39c388dfcd195ed978aef54ee0676ab7c1370d8b8792c35"
+      url "https://github.com/strubio-ray/mo/releases/download/strubio-v0.24.0/mo_strubio-v0.24.0_linux_amd64.tar.gz"
+      sha256 "8b966c5aa66db98f58544a6698e8c7a45d110adbbc8dca925d0a5f99161ac535"
     end
   end
 
