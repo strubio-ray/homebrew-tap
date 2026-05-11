@@ -1,24 +1,24 @@
 class MarvinCli < Formula
   desc "CLI for Amazing Marvin (desktop local API + public cloud API)"
   homepage "https://github.com/Rubio-Enterprises/marvin-cli"
-  version "0.6.0-strubio.1"
+  version "0.6.0-strubio.2"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/Rubio-Enterprises/marvin-cli/releases/download/v0.6.0-strubio.1/marvin-cli_v0.6.0-strubio.1_darwin_arm64.tar.gz"
-      sha256 "2ddac82ac9f4200ce26f05380519e6d088a6164f355cfd27d2184b20015dd9ef"
+      url "https://github.com/Rubio-Enterprises/marvin-cli/releases/download/v0.6.0-strubio.2/marvin-cli_v0.6.0-strubio.2_darwin_arm64.tar.gz"
+      sha256 "6d57a3969653d46d299659472f771cf9da2b0acb60f9285c923d2cd483a8143d"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/Rubio-Enterprises/marvin-cli/releases/download/v0.6.0-strubio.1/marvin-cli_v0.6.0-strubio.1_darwin_amd64.tar.gz"
-      sha256 "b851f0c17d4c618d2d13f6d23322a864b2ac2d479f1fe468ac13c2e074e4381a"
+      url "https://github.com/Rubio-Enterprises/marvin-cli/releases/download/v0.6.0-strubio.2/marvin-cli_v0.6.0-strubio.2_darwin_amd64.tar.gz"
+      sha256 "e1eaf37f62f6957949ba33d054cc3bc8d72e6d6cd701965fd5ba437d4b7d9e6c"
     end
   end
 
   on_linux do
     if Hardware::CPU.intel?
-      url "https://github.com/Rubio-Enterprises/marvin-cli/releases/download/v0.6.0-strubio.1/marvin-cli_v0.6.0-strubio.1_linux_amd64.tar.gz"
-      sha256 "bf3c6119b0296ba7d7c46ed2a3dc424aaf4ff3d8f4b9d5ed91f55227a30b585f"
+      url "https://github.com/Rubio-Enterprises/marvin-cli/releases/download/v0.6.0-strubio.2/marvin-cli_v0.6.0-strubio.2_linux_amd64.tar.gz"
+      sha256 "1f1ca7f2d81338480276ff1eecf3330b1b9969e193d9bb12edf5e42b8cf34a90"
     end
   end
 
