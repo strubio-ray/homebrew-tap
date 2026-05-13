@@ -6,20 +6,20 @@ class Clipssh < Formula
   license "MIT"
 
   depends_on :macos
+  depends_on xcode: ["13.0", :build]
 
   def install
-    # Embed version in Swift source before compiling
-    inreplace "swift/ClipsshPaste.swift", 'let version = "1.0.0"', "let version = \"#{version}\""
+    inreplace "swift/Sources/clipssh-paste/main.swift",
+              'let version = "1.0.0"',
+              "let version = \"#{version}\""
 
-    # Compile Swift CLI helper (explicit AppKit link for robustness)
-    system "swiftc", "-O", "-framework", "AppKit", "-o", "clipssh-paste", "swift/ClipsshPaste.swift"
+    cd "swift" do
+      system "swift", "build", "--disable-sandbox", "-c", "release"
+      bin.install ".build/release/clipssh-paste"
+    end
 
-    # Embed version in shell script
     inreplace "clipssh", "%%VERSION%%", version.to_s
-
-    # Install both binaries
     bin.install "clipssh"
-    bin.install "clipssh-paste"
   end
 
   test do
