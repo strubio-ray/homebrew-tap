@@ -1,8 +1,8 @@
 class Clipssh < Formula
   desc "Send clipboard images to remote SSH hosts"
   homepage "https://github.com/Rubio-Enterprises/clipssh"
-  url "https://github.com/Rubio-Enterprises/clipssh/archive/refs/tags/v1.2.2.tar.gz"
-  sha256 "205fc444e5cb2eb692c105baf7975175d2f923cf2ce8bf2cb5e20bd867e0e19d"
+  url "https://github.com/Rubio-Enterprises/clipssh/archive/refs/tags/v1.3.0.tar.gz"
+  sha256 "aeb941aa52f09db07d93a873934ad4075a50c0788a42f49bc39d7c96880f8675"
   license "MIT"
 
   depends_on :macos
